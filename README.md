@@ -1,5 +1,12 @@
 # Java Generics
 
+Java Generics provide a way to parameterize types, allowing classes, interfaces, and methods to operate on typed data without being specific to a single data type. This enhances type safety and code reusability.
+
+Benefits:
+- Type Safety: Errors are caught at compile time, reducing runtime errors.
+- Code Reusability: Write methods and classes that work with different data types.
+- Avoids Explicit Casting: Eliminates the need to cast objects retrieved from collections.
+
 ## Bounded Type Parameters
 - **Description:** Bounded type parameters limit the allowable types in generics to specific subclasses or interfaces, enhancing type safety and functionality.
 - **Example:**
@@ -21,6 +28,8 @@
 
 ## Wildcards
 - **Description:** Use wildcards (`? extends` and `? super`) to allow generic methods to handle parameters of varying types. Wildcards manage covariance and contravariance, enabling methods to work with collections of unknown types.
+- ? extends (Covariance): Read-only operations, ensuring elements are at least a certain type.
+? super (Contravariance): Write operations, allowing addition of a specific type and its
 - **Example:**
   ```java
   public void processAnimals(List<? extends Animal> animals) {
@@ -73,7 +82,7 @@
 
 ---
 
-## Multiple Bounds
+## Multiple Bounds <T extends Animal & Walker>
 - **Description:** Use multiple bounds to enforce multiple type conditions, such as `<T extends Animal & Walker>`. This ensures parameters meet all specified requirements, promoting functional and type safety.
 - **Example:**
   ```java
@@ -85,7 +94,7 @@
 
 ---
 
-## Lower Bounds
+## Lower Bounds (? super)
 - **Description:** Lower bounds support write operations by allowing additions of a type and its subtypes. Items retrieved are recognized as `Object`, requiring casting for specific uses.
 - **Example:**
   ```java
@@ -99,7 +108,7 @@
 
 ---
 
-## Upper Bounds
+## Upper Bounds (? extends)
 - **Description:** Upper bounds facilitate read operations, ensuring all retrieved items are at least of the specified type. Additions (except for `null`) are restricted to maintain type integrity.
 - **Example:**
   ```java
@@ -114,7 +123,7 @@
 
 ---
 
-## Unbounded
+## Unbounded (?)
 - **Description:** Unbounded wildcards (`?`) allow methods to work with any class.
 - **Example:**
   ```java
